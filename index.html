@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Directory</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="public/bootstrap-4.6.0-dist/css/bootstrap.css">
+
+  <!-- My sheets -->
+  <link rel="stylesheet" href="public/css/styles.css">
+  <link rel="stylesheet" href="public/css/preloader.css">
+  <link rel="stylesheet" href="public/css/fonts.css">
+
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader"></div>
+  <nav>
+    <div class="navbar">
+      <div class="container">
+        <h4 class="browns-light text-white">Company directory</h4>
+        <button class="btn btn-myBlue" onclick="refreshTables()"><i class="fas fa-sync"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid d-block justify-content-center align-items-center bg-light" id="content">
+    <div class="row">
+      <div class="col">
+        <ul class="nav nav-fill nav-pills my-3 pl-md-3 border rounded" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+              aria-controls="pills-home" aria-selected="true">Employees</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+              aria-controls="pills-profile" aria-selected="false">Departments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+              aria-controls="pills-contact" aria-selected="false">Locations</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <!-- 1st tab-->
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <!-- Search and buttons -->
+            <div class="d-flex flex-column align-items-start pl-md-3">
+              <div>
+                <button class="btn btn-outline-danger my-2 d-none d-sm-none d-md-none"
+                id="employeeMassDeleteButtonCard">Delete selected</button>
+                <button class="btn btn-outline-danger my-2 d-none d-sm-none d-md-none"
+                id="employeeMassDeleteButtonTable">Delete selected</button>
+                <button class="btn btn-outline-success my-2" id="employeeAddButton">Add employee</button>
+              </div>
+              <!-- Desktop search -->
+              <input type="text" class="form-control w-100 mb-1 d-none d-md-block pl-md-3" id="searchBar"
+                placeholder="Search name...">
+              <!-- Mobile search -->
+              <input type="text" class="form-control w-100 mb-1 d-md-none" id="searchBarMobile" placeholder="Search name...">
+            </div>
+            <!-- Mobile view -->
+            <div class="container-fluid p-0 d-md-none">
+              <div class="table-responsive overflow-auto border rounded shadow" id="employeeTable">
+                <table class="table" id="employeeTable">
+                  <thead>
+                    <tr>
+                      <th>Action</th>
+                      <th>Last name</th>
+                      <th>First name</th>
+                    </tr>
+                  </thead>
+                  <tbody id="employeeBody">
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Desktop view -->
+            <div class="container-fluid d-none d-md-flex flex-column" id="employeeContainer">
+              <div class="card-deck" id="employeeCardDeck">
+
+              </div>
+            </div>
+          </div>
+          <!-- 2nd tab-->
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <!-- Buttons -->
+            <div class="d-flex justify-content-start pl-md-3">
+              <button class="btn btn-outline-success my-2" id="departmentAddButton">Add department</button>
+            </div>
+            <!-- Mobile view -->
+            <div class="container-fluid p-0 d-md-none">
+              <div class="table-responsive overflow-auto border rounded shadow" style="max-height:75vh;">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Action</th>
+                      <th>Department</th>
+                      <th>Location</th>
+                    </tr>
+                  </thead>
+                  <tbody id="departmentBody">
+  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Desktop view -->
+            <div class="container-fluid d-none d-md-flex flex-column" id="employeeContainer">
+              <div class="card-deck" id="departmentCardDeck">
+
+              </div>
+            </div>
+          </div>
+          <!-- 3rd tab-->
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <!-- Buttons -->
+            <div class="d-flex justify-content-start pl-md-3">
+              <button class="btn btn-outline-success my-2" id="locationAddButton">Add location</button>
+            </div>
+            <!-- Mobile view-->
+            <div class="container-fluid p-0 d-md-none">
+              <div class="table-responsive overflow-auto border rounded shadow" style="max-height:75vh;">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Action</th>
+                      <th>Location</th>
+                    </tr>
+                  </thead>
+                  <tbody id="locationBody">
+  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Desktop view -->
+            <div class="container-fluid d-none d-md-flex flex-column" id="locationContainer">
+              <div class="card-deck" id="locationCardDeck">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <!-- Employee -->
+  <!-- Add -->
+  <div class="modal fade" id="employeeAdd" tabindex="-1" role="dialog" aria-labelledby="employeeAdd" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="employeeAddTitle">Add an employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="employeeAddBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete -->
+  <div class="modal fade" id="employeeDelete" tabindex="-1" role="dialog" aria-labelledby="employeeDelete"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="employeeDeleteTitle">Delete employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="employeeDeleteBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mass Delete -->
+  <div class="modal fade" id="employeeMassDelete" tabindex="-1" role="dialog" aria-labelledby="employeeMassDelete"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="employeeMassDeleteTitle">Delete employee's</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="employeeMassDeleteBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Edit -->
+  <div class="modal fade" id="employeeEdit" tabindex="-1" role="dialog" aria-labelledby="employeeEdit"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="employeeEditTitle">Edit employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="employeeEditBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Departments -->
+  <!-- Add -->
+  <div class="modal fade" id="departmentAdd" tabindex="-1" role="dialog" aria-labelledby="departmentAdd"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="departmentAddTitle">Add a department</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="departmentAddBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete -->
+  <div class="modal fade" id="departmentDelete" tabindex="-1" role="dialog" aria-labelledby="departmentDelete"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="departmentDeleteTitle">Delete department</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="departmentDeleteBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Edit -->
+  <div class="modal fade" id="departmentEdit" tabindex="-1" role="dialog" aria-labelledby="departmentEdit"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="departmentEditTitle">Edit department</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="departmentEditBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Locations -->
+  <!-- Add -->
+  <div class="modal fade" id="locationAdd" tabindex="-1" role="dialog" aria-labelledby="locationAdd" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="locationAddTitle">Add a location</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="locationAddBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete -->
+  <div class="modal fade" id="locationDelete" tabindex="-1" role="dialog" aria-labelledby="locationDelete"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="locationDeleteTitle">Delete location</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="locationDeleteBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Edit -->
+  <div class="modal fade" id="locationEdit" tabindex="-1" role="dialog" aria-labelledby="locationEdit"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="locationEditTitle">Edit location</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="locationEditBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jquery, Bootstrap bundle, index.js, fontawesome, JqueryFormValidation-->
+  <script src="https://kit.fontawesome.com/323c69d22b.js" crossorigin="anonymous"></script>
+  <script src="public/js/jquery-3.6.0.js"></script>
+  <script src="public/js/jquery-validation-1.19.3.js"
+    type="text/javascript"></script>
+  <script src="public/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
+  <script src="public/js/index.js" type="text/javascript"></script>
+</body>
+
+</html>

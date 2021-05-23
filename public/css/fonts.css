@@ -1,0 +1,131 @@
+/* ROBOTO */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/Roboto/Roboto-Regular.ttf');
+}
+.roboto{
+  font-family: 'Roboto';
+  font-weight: 300 !important;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/Roboto/Roboto-Black.ttf');
+}
+.roboto-black{
+  font-family: 'Roboto';
+  font-weight: 600 !important;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/Roboto/Roboto-Bold.ttf');
+}
+.roboto-bold{
+  font-family: 'Roboto';
+  font-weight: 500 !important;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../assets/fonts/Roboto/Roboto-Light.ttf');
+}
+.roboto-light{
+  font-family: 'Roboto';
+  font-weight: 100 !important;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../assets/fonts/Roboto/Roboto-Thin.ttf');
+}
+.roboto-thin{
+  font-family: 'Roboto';
+  font-weight: 200 !important;
+}
+/* Source sans pro */
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/SourceSansPro/SourceSansPro-Regular.ttf');
+}
+.source-sans{
+  font-family: 'SourceSansPro';
+  font-weight: 300 !important;
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/SourceSansPro/SourceSansPro-Black.ttf');
+}
+.source-sans-black{
+  font-family: 'SourceSansPro';
+  font-weight: 600 !important;
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/SourceSansPro/SourceSansPro-Bold.ttf');
+}
+.source-sans-bold{
+  font-family: 'SourceSansPro';
+  font-weight: 500 !important;
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../assets/fonts/SourceSansPro/SourceSansPro-ExtraLight.ttf');
+}
+.source-sans-extralight{
+  font-family: 'SourceSansPro';
+  font-weight: 100 !important;
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../assets/fonts/SourceSansPro/SourceSansPro-Light.ttf');
+}
+.source-sans-light{
+  font-family: 'SourceSansPro';
+  font-weight: 200 !important;
+}
+
+/* BROWNS */
+@font-face {
+ font-family: 'Browns';
+ font-weight: 300;
+ src: url('../assets/fonts/BROWN/Brown-Regular.otf'); 
+}
+.browns{
+  font-family: 'Browns';
+  font-weight: 300;
+}
+@font-face{
+  font-family: 'Browns';
+  font-weight: 200;
+  src: url('../assets/fonts/BROWN/Brown-Light.otf');
+}
+.browns-light{
+  font-family: 'Browns';
+  font-weight: 200;
+}
+@font-face{
+  font-family: 'Browns';
+  font-weight: 500;
+  src: url('../assets/fonts/BROWN/Brown-Bold.otf');
+}
+.browns-bold{
+  font-family: 'Browns';
+  font-weight:500;
+}

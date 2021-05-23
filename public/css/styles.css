@@ -1,0 +1,82 @@
+html {
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body{
+  height: 100%;
+  overflow: hidden;
+}
+::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+ }
+::-webkit-scrollbar-thumb {
+  background: #b1b7e6;
+  border-radius: 0.2rem;
+}
+
+::-webkit-scrollbar-track{
+  background: #ffffff;
+  box-shadow: inset 7px 10px 12px #f0f0f0;
+}
+
+.navbar{
+  height: 7.5vh;
+  background-color: #bdc2e4;
+}
+
+.btn-myBlue{
+  background-color: #b1b7e6;
+  color: white;
+  transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.151);
+}
+.btn-myBlue:hover{
+  background-color: #9398bd;
+  color: white;
+}
+
+#content{
+  height: 92.5vh; 
+}
+
+#employeeContainer{
+  max-height: 65vh;
+  overflow: auto;
+}
+
+.card{
+  min-width: 18rem !important;
+}
+
+.nav-link.active{
+  background-color: #b1b7e6 !important;
+}
+
+.selected-card, .selected-row{
+  background-color: #bdc2e4 !important;
+}
+
+.employee-card{
+  cursor: pointer;
+}
+
+.employeeTableRow{
+  cursor: pointer;
+}
+
+.table td, .table th{
+  vertical-align: middle !important;
+}
+
+@media only screen and (max-width: 768px) {
+
+  #employeeTable{
+    max-height: 67.2vh;
+  }
+
+}
