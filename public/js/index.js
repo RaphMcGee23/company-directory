@@ -33,7 +33,7 @@ function refreshTables() {
     type: 'GET',
     dataType: 'json',
     success: function (result) {
-      console.log(result);
+      
       // Clear tables and decks
       $('#employeeBody').empty();
       $('#departmentBody').empty();
@@ -235,7 +235,7 @@ function refreshTables() {
             $('#employeeDeleteBody').empty();
           },
           success: function (result) {
-            console.log(result);
+            
             $('#employeeDeleteBody').append(`
               <h4>${result.employee[0].firstName} ${result.employee[0].lastName}</h4>
               <p>${result.employee[0].email}</p>
@@ -285,7 +285,7 @@ function refreshTables() {
             id: e.target.attributes[1].value
           },
           success: function (result) {
-            console.log(result);
+            
             $('#employeeEditBody').append(employeeForm(result.departments, '#employeeEdit', 'Edit'));
             $('#firstName').val(result.employee[0].firstName);
             $('#lastName').val(result.employee[0].lastName);
@@ -343,6 +343,8 @@ function refreshTables() {
             })
           },
           beforeSend: function (result) {
+            $('#locationEditBody').empty();
+            $('#departmentEditBody').empty();
             $('#employeeEditBody').empty();
           },
           error: function (jqXHR, textStatus, errorThrown) {
@@ -388,7 +390,7 @@ function refreshTables() {
             $('#departmentDeleteBody').empty();
           },
           success: function (result) {
-            console.log(result);
+            
             if (result.data.departments.count === "0") {
               $('#departmentDeleteBody').append(`
               <h4>${result.data.departments[0].name}</h4>
@@ -487,7 +489,6 @@ function refreshTables() {
             id: e.target.attributes[1].value
           },
           success: function (result) {
-            console.log(result);
             $('#departmentEditBody').append(departmentForm(result.data.locations, '#departmentEdit', 'Edit'));
             $('#department').val(result.data.departments[0].name);
             $('#location').val(result.data.departments[0].locationName);
@@ -523,7 +524,9 @@ function refreshTables() {
             })
           },
           beforeSend: function (result) {
+            $('#locationEditBody').empty();
             $('#departmentEditBody').empty();
+            $('#employeeEditBody').empty();
           },
           error: function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR);
@@ -566,7 +569,6 @@ function refreshTables() {
             $('#locationDeleteBody').empty();
           },
           success: function (result) {
-            console.log(result);
             if (result.data.count === "0") {
               $('#locationDeleteBody').append(`
               <h4>${result.data.locations[0].name}</h4>
@@ -651,7 +653,7 @@ function refreshTables() {
             id: e.target.attributes[1].value
           },
           success: function (result) {
-            console.log(result);
+            
             $('#locationEditBody').append(locationForm('#locationEdit', 'Edit'));
             $('#location').val(result.data.locations[0].name);
             $("form[name='locationEdit']").validate({
@@ -682,6 +684,8 @@ function refreshTables() {
           },
           beforeSend: function (result) {
             $('#locationEditBody').empty();
+            $('#departmentEditBody').empty();
+            $('#employeeEditBody').empty();
           },
           error: function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR);
@@ -752,7 +756,7 @@ function departmentForm(locations, modal, type) {
   return `
   <form name="department${type}">
     <div class="form-group">
-      <label for="firstName">Department name: </label>
+      <label for="department">Department name: </label>
       <input type="text" class="form-control" id="department" name="department" placeholder="Department name...">
     </div>
     <div class="form-group">
@@ -772,7 +776,7 @@ function locationForm(modal, type) {
   return `
   <form name="location${type}">
     <div class="form-group">
-      <label for="firstName">Location name: </label>
+      <label for="location">Location name: </label>
       <input type="text" class="form-control" id="location" name="location" placeholder="Location name...">
     </div>
     <hr>
