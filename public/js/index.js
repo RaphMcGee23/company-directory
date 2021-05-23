@@ -237,11 +237,8 @@ function refreshTables() {
           success: function (result) {
             
             $('#employeeDeleteBody').append(`
-              <h4>${result.employee[0].firstName} ${result.employee[0].lastName}</h4>
-              <p>${result.employee[0].email}</p>
-              <p>${result.employee[0].jobTitle}</p>
-              <p>${result.employee[0].department}</p>
-              <p>${result.employee[0].location}</p>
+              <h4>Are you sure you want to delete?</h4>
+              <h5>${result.employee[0].firstName} ${result.employee[0].lastName}</h5>
               <hr>
               <button class="btn btn-primary float-right px-5" id="employeeDeleteConfirm">Delete</button>
               <button class="btn btn-danger float-right mx-2" onclick="$('#employeeDelete').modal('toggle');">Cancel</button>
@@ -393,8 +390,8 @@ function refreshTables() {
             
             if (result.data.departments.count === "0") {
               $('#departmentDeleteBody').append(`
-              <h4>${result.data.departments[0].name}</h4>
-              <p>${result.data.departments[0].locationName}</p>
+              <h4>Are you sure you want to delete?</h4>
+              <h5>${result.data.departments[0].name}</h5>
               <hr>
               <div class="d-flex justify-content-end">
                 <button class="btn btn-danger mx-2" onclick="$('#departmentDelete').modal('toggle');">Cancel</button>
@@ -571,7 +568,8 @@ function refreshTables() {
           success: function (result) {
             if (result.data.count === "0") {
               $('#locationDeleteBody').append(`
-              <h4>${result.data.locations[0].name}</h4>
+              <h4>Are you sure you want to delete?</h4>
+              <h5>${result.data.locations[0].name}</h5>
               <hr>
               <div class="d-flex justify-content-end">
                 <button class="btn btn-danger mx-2" onclick="$('#locationDelete').modal('toggle');">Cancel</button>
