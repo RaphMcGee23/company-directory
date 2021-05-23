@@ -596,7 +596,7 @@ function refreshTables() {
                 });
               });
             } else {
-              $('#locationDeleteBody').append(`<div class="alert alert-danger d-block my-3" role="alert">Department rows depend on this location! Please delete dependants first.</div><button class="btn btn-primary float-right" onclick="$('#departmentDelete').modal('toggle');">Close</button>`);
+              $('#locationDeleteBody').append(`<div class="alert alert-danger d-block my-3" role="alert">Department rows depend on this location! Please delete dependants first.</div><button class="btn btn-primary float-right" onclick="$('#locationDelete').modal('toggle');">Close</button>`);
             }
           },
           error: function (jqXHR, textStatus, errorThrown) {
