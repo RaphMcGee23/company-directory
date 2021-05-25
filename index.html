@@ -20,19 +20,21 @@
 <body>
   <!-- Preloader -->
   <div id="preloader"></div>
-  <nav>
-    <div class="navbar">
-      <div class="container">
-        <h4 class="browns-light text-white">Company directory</h4>
-        <button class="btn btn-myBlue" onclick="refreshTables()"><i class="fas fa-sync"></i></button>
-      </div>
-    </div>
-  </nav>
 
-  <div class="container-fluid d-block justify-content-center align-items-center bg-light" id="content">
-    <div class="row">
-      <div class="col">
-        <ul class="nav nav-fill nav-pills my-3 mx-md-3 border rounded" id="pills-tab" role="tablist">
+  <div class="container-fluid d-flex flex-column bg-light" style="height: 100vh;">
+    <div class="row" style="flex: 0 0;">
+      <nav class="w-100">
+        <div class="navbar">
+          <div class="container-fluid">
+            <h4 class="browns-light text-white">Company directory</h4>
+            <button class="btn btn-myBlue" onclick="refreshTables()"><i class="fas fa-sync"></i></button>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="row" style="flex: 1 1; overflow:hidden;">
+      <div class="col d-flex flex-column overflow-auto" style="max-height:100%;">
+        <ul class="nav nav-fill nav-pills my-3 mx-md-3 border rounded" style="flex: 0 0;" id="pills-tab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
               aria-controls="pills-home" aria-selected="true">Employees</a>
@@ -46,11 +48,11 @@
               aria-controls="pills-contact" aria-selected="false">Locations</a>
           </li>
         </ul>
-        <div class="tab-content" id="pills-tabContent">
+        <div class="tab-content d-flex flex-column" id="pills-tabContent">
           <!-- 1st tab-->
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="tab-pane fade show active flex-column h-100" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <!-- Search and buttons -->
-            <div class="d-flex flex-column align-items-start pl-md-3">
+            <div class="d-flex flex-column align-items-start pl-md-3" style="flex: 0 0;">
               <div>
                 <button class="btn btn-outline-danger my-2 d-none d-sm-none d-md-none"
                 id="employeeMassDeleteButtonCard">Delete selected</button>
@@ -65,9 +67,9 @@
               <input type="text" class="form-control w-100 mb-1 d-md-none" id="searchBarMobile" placeholder="Search name...">
             </div>
             <!-- Mobile view -->
-            <div class="container-fluid p-0 d-md-none">
-              <div class="table-responsive overflow-auto border rounded shadow" id="employeeTable">
-                <table class="table" id="employeeTable">
+            <div class="d-flex p-0 d-md-none" style="flex: 0 1 auto; overflow:auto;">
+              <div class="table-responsive border rounded mb-3">
+                <table class="table m-0">
                   <thead>
                     <tr>
                       <th>Action</th>
@@ -89,15 +91,15 @@
             </div>
           </div>
           <!-- 2nd tab-->
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <div class="tab-pane fade flex-column h-100" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             <!-- Buttons -->
             <div class="d-flex justify-content-start pl-md-3">
               <button class="btn btn-outline-success my-2" id="departmentAddButton">Add department</button>
             </div>
             <!-- Mobile view -->
-            <div class="container-fluid p-0 d-md-none">
-              <div class="table-responsive overflow-auto border rounded shadow" style="max-height:75vh;">
-                <table class="table">
+            <div class="d-flex p-0 d-md-none" style="flex: 0 1 auto; overflow:auto;">
+              <div class="table-responsive border rounded mb-3">
+                <table class="table m-0">
                   <thead>
                     <tr>
                       <th>Action</th>
@@ -119,15 +121,15 @@
             </div>
           </div>
           <!-- 3rd tab-->
-          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+          <div class="tab-pane fade flex-column h-100" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
             <!-- Buttons -->
             <div class="d-flex justify-content-start pl-md-3">
               <button class="btn btn-outline-success my-2" id="locationAddButton">Add location</button>
             </div>
             <!-- Mobile view-->
-            <div class="container-fluid p-0 d-md-none">
-              <div class="table-responsive overflow-auto border rounded shadow" style="max-height:75vh;">
-                <table class="table">
+            <div class="d-flex p-0 d-md-none"  style="flex: 0 1 auto; overflow:auto;">
+              <div class="table-responsive border rounded mb-3">
+                <table class="table m-0">
                   <thead>
                     <tr>
                       <th>Action</th>

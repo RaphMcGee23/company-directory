@@ -1,14 +1,12 @@
 html {
   box-sizing: border-box;
   height: 100vh;
-  overflow: hidden;
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
 body{
   height: 100%;
-  overflow: hidden;
 }
 ::-webkit-scrollbar {
   width: 13px;
@@ -25,7 +23,6 @@ body{
 }
 
 .navbar{
-  height: 7.5vh;
   background-color: #bdc2e4;
 }
 
@@ -38,15 +35,6 @@ body{
 .btn-myBlue:hover{
   background-color: #9398bd;
   color: white;
-}
-
-#content{
-  height: 92.5vh; 
-}
-
-#employeeContainer{
-  max-height: 65vh;
-  overflow: auto;
 }
 
 .card{
@@ -73,10 +61,11 @@ body{
   vertical-align: middle !important;
 }
 
-@media only screen and (max-width: 768px) {
+.tab-content > .active{
+  display: flex;
+}
 
-  #employeeTable{
-    max-height: 67.2vh;
-  }
-
+.tab-content{
+  flex: 1 1;
+  overflow: auto;
 }
